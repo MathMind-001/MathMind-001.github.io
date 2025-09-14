@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About NeuralGlow — A Forest of Curiosity</title>
+  <meta name="description" content="About NeuralGlow: A quiet, resilient, playful exploration of complexity, resilience, and glowing creativity.">
+  <link rel="icon" href="/assets/images/neuralglow_logo_darkpink_left.png" type="image/png">
+  <!-- Add Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Add Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      /* Light mode (default) */
+      --primary: #8E24AA;
+      --primary-light: #AB47BC;
+      --primary-dark: #6A1B9A;
+      --accent: #FFD740;
+      --accent-light: #FFECB3;
+      --text-main: #333333;
+      --text-light: #666666;
+      --background: #f9f9f9;
+      --card-bg: #ffffff;
+      --border-radius: 12px;
+      --box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      --header-bg: var(--primary);
+      --header-text: #ffffff;
+      --card-border: #e0e0e0;
+    }
+    
+    /* Dark mode */
+    [data-theme="dark"] {
+      --primary: #9C27B0;
+      --primary-light: #BA68C8;
+      --primary-dark: #7B1FA2;
+      --accent: #FFD740;
+      --accent-light: #FFECB3;
+      --text-main: #E0E0E0;
+      --text-light: #B0B0B0;
+      --background: #121212;
+      --card-bg: #1E1E1E;
+      --border-radius: 12px;
+      --box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+      --header-bg: #7B1FA2;
+      --header-text: #ffffff;
+      --card-border: #333333;
+    }
+    
+    /* General Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--background);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Header Styles */
+    header {
+      background: var(--header-bg);
+      color: var(--text-main);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header .logo img {
+      height: 45px;
+      transition: all 0.3s ease;
+    }
+
+    header .logo:hover img {
+      transform: scale(1.05);
+    }
+
+    nav {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    header nav a {
+      color: var(--text-main);
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    header nav a:hover {
+      background-color: var(--background);
+      color: var(--primary);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+
+    nav a:hover {
+      background: rgba(255,255,255,0.15);
+      color: var(--accent);
+    }
+    
+    /* Theme Toggle Styles */
+    .theme-switch-wrapper {
+      display: flex;
+      align-items: center;
+      margin-left: 15px;
+    }
+    
+    .theme-switch {
+      display: inline-block;
+      position: relative;
+      width: 50px;
+      height: 25px;
+    }
+    
+    .theme-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255,255,255,0.3);
+      transition: .4s;
+      border-radius: 25px;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 19px;
+      width: 19px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    
+    input:checked + .slider {
+      background-color: var(--accent);
+    }
+    
+    input:checked + .slider:before {
+      transform: translateX(25px);
+    }
+    
+    .slider .icon {
+      position: absolute;
+      top: 5px;
+      font-size: 13px;
+      transition: .4s;
+      color: var(--white);
+    }
+    
+    .slider .sun {
+      left: 7px;
+      opacity: 1;
+    }
+    
+    .slider .moon {
+      right: 7px;
+      opacity: 0;
+    }
+    
+    input:checked + .slider .sun {
+      opacity: 0;
+    }
+    
+    input:checked + .slider .moon {
+      opacity: 1;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Main Content Styles */
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    .page-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .page-title h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.8rem;
+      color: var(--primary-dark);
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+    
+    .page-title .subtitle {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center; /* Override the justified text for subtitle */
+    }
+    
+    .hero-image {
+      width: 100%;
+      max-width: 1000px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: var(--border-radius);
+      display: block;
+      margin: 0 auto 50px;
+      box-shadow: var(--box-shadow);
+    }
+    
+    .content-card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: var(--box-shadow);
+    }
+    
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 50px 0;
+    }
+    
+    .grid-card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 30px;
+      box-shadow: var(--box-shadow);
+      transition: transform 0.3s ease;
+    }
+    
+    .grid-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .section-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .section-header i {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-right: 15px;
+    }
+    
+    h2 {
+      font-family: 'Poppins', sans-serif;
+      color: var(--primary-dark);
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    
+    h3 {
+      font-family: 'Poppins', sans-serif;
+      color: var(--primary-dark);
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-top: 0;
+    }
+    
+    p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      color: var(--text-main);
+      text-align: justify;
+    }
+    
+    .category-tag {
+      display: inline-block;
+      padding: 5px 12px;
+      background: var(--accent-light);
+      color: var(--primary-dark);
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Image Styles */
+    .featured-image {
+      max-width: 49%;
+      height: auto;
+      display: block;
+      margin: 30px auto;
+      border-radius: var(--border-radius);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    .featured-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Social Sharing */
+    .social-share {
+      display: flex;
+      justify-content: center;
+      margin: 50px 0;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    
+    .social-share a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-share .twitter {
+      background: #1DA1F2;
+    }
+    
+    .social-share .facebook {
+      background: #4267B2;
+    }
+    
+    .social-share .linkedin {
+      background: #0077B5;
+    }
+    
+    .social-share .pinterest {
+      background: #E60023;
+    }
+    
+    .social-share a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Quote Section */
+    .quote-section {
+      background: linear-gradient(to right, var(--primary-light), var(--primary));
+      color: white;
+      padding: 60px 40px;
+      border-radius: var(--border-radius);
+      margin: 50px 0;
+      text-align: center;
+      position: relative;
+    }
+    
+    .quote-section p {
+      font-size: 1.4rem;
+      line-height: 1.7;
+      font-style: italic;
+      color: white;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      text-align: center; /* Override the justified text for quotes */
+    }
+    
+    .quote-mark {
+      font-size: 8rem;
+      position: absolute;
+      opacity: 0.1;
+      font-family: Georgia, serif;
+    }
+    
+    .quote-mark.left {
+      top: -20px;
+      left: 30px;
+    }
+    
+    .quote-mark.right {
+      bottom: -60px;
+      right: 30px;
+    }
+
+    /* Footer Styles */
+    footer {
+      background: var(--primary);
+      color: #eee;
+      padding: 50px 0 20px;
+      margin-top: 60px;
+    }
+    
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .footer-column h4 {
+      color: white;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-column ul li a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-column ul li a:hover {
+      color: var(--accent);
+    }
+    
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-icons a:hover {
+      background: var(--accent);
+      color: var(--primary-dark);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+    
+    .copyright a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .copyright a:hover {
+      color: var(--accent);
+    }
+    
+    /* Breadcrumbs */
+    .breadcrumbs {
+      display: flex;
+      margin-bottom: 30px;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+    
+    .breadcrumbs a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .breadcrumbs a:hover {
+      color: var(--primary-dark);
+    }
+    
+    .breadcrumbs .separator {
+      margin: 0 10px;
+      color: #ccc;
+    }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width: 992px) {
+      .hero-image {
+        height: 300px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 15px;
+        margin: 30px auto;
+      }
+      
+      .content-card {
+        padding: 25px;
+      }
+      
+      nav {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .page-title h1 {
+        font-size: 2.2rem;
+      }
+      
+      .quote-section p {
+        font-size: 1.2rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .page-title h1 {
+        font-size: 1.8rem;
+      }
+      
+      .content-card {
+        padding: 20px;
+      }
+      
+      .hero-image {
+        height: 200px;
+      }
+    }
+  </style>
+  <!-- Dark Mode functionality -->
+  <script src="/assets/js/dark-mode.js" defer></script>
+  <!-- Theme color meta tag for browser UI -->
+  <meta name="color-scheme" content="light dark">
+</head>
+<body>
+
+<header>
+  <div class="header-container">
+    <div class="logo" onclick="window.location.href='/'" style="cursor: pointer;">
+      <img src="/assets/images/neuralglow_logo_darkpink_left.png" alt="NeuralGlow Logo">
+    </div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/research.html">Research</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/quotes/">Quotes</a>
+      <a href="/notes/">Notes</a>
+      <a href="/efficiency/">Efficiency</a>
+      <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="theme-toggle">
+          <input type="checkbox" id="theme-toggle" />
+          <span class="slider">
+            <i class="fas fa-sun icon sun"></i>
+            <i class="fas fa-moon icon moon"></i>
+          </span>
+        </label>
+      </div>
+    </nav>
+    <button class="mobile-menu-btn">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumbs">
+    <a href="/">Home</a>
+    <span class="separator">/</span>
+    <span>About</span>
+  </div>
+  
+  <div class="page-title">
+    <h1>About NeuralGlow</h1>
+    <p class="subtitle">A quiet, resilient, playful exploration of complexity, resilience, and glowing creativity in a world of digital noise and algorithmic thinking.</p>
+  </div>
+  
+  <img src="/assets/images/IMG_1092.jpeg" alt="Wildflowers of Glow" class="hero-image">
+
+  <div class="content-card">
+    <div class="category-tag">Our Story</div>
+    <div class="section-header">
+      <i class="fas fa-seedling"></i>
+      <h2>Welcome to NeuralGlow</h2>
+    </div>
+    <p>Welcome to NeuralGlow! We're a free, online wiki-style research project that connects perspectives across the daily absurdities and beauties of life. Think of us as professional researchers, but with a gloriously amateur spirit and a penchant for quiet observation.</p>
+    <p>Founded in 2025 during a particularly noisy digital summer, NeuralGlow began as a simple collection of observations about how humans adapt to information overload. What started as personal notes quickly evolved into a collaborative exploration of cognitive resilience in the digital age.</p>
+    <p>Our work sits at the intersection of cognitive science, digital anthropology, and everyday philosophy—studying how minds navigate streams of information while maintaining what matters most: genuine curiosity and authentic connection.</p>
+  </div>
+  
+  <div class="content-grid">
+    <div class="grid-card">
+      <div class="category-tag">Vision</div>
+      <h3><i class="fas fa-eye"></i> Why We Exist</h3>
+      <p>Because resilience isn't just about standing firm against chaos—it's about doing so with a slightly mischievous grin, even when reality decides to throw confetti into your coffee mug, your meetings, and your midnight dreams. (Yes, it happens more often than we'd like to admit.)</p>
+      <p>We believe the most interesting thinking happens when minds are given space to breathe—away from constant notifications, algorithmic suggestions, and digital pressure. NeuralGlow is both a sanctuary and a laboratory for this type of thinking.</p>
+    </div>
+    
+    <div class="grid-card">
+      <div class="category-tag">Foundation</div>
+      <h3><i class="fas fa-brain"></i> The Research</h3>
+      <p>Built on actual research, fueled by relentless observation, and stitched together by a refusal to accept boringness as the final word, NeuralGlow explores how minds adapt under constant informational noise. We're basically building cognitive fortresses, one quirky insight at a time.</p>
+      <p>Our methodology combines qualitative observation, pattern recognition across disciplines, and thoughtful synthesis—all delivered with a touch of gentle humor that helps the insights stick.</p>
+    </div>
+    
+    <div class="grid-card">
+      <div class="category-tag">Purpose</div>
+      <h3><i class="fas fa-compass"></i> Our Mission</h3>
+      <p>To build cognitive firewalls that can withstand even the most persistent digital spam. To light torches of calm in the midst of algorithmic storms. And, of course, to quietly laugh while the algorithms try to simulate us—good luck with that, robots!</p>
+      <p>We're documenting what AI can't yet replicate: the beautiful messiness of human thought, the value of slow consideration, and the gentle power of noticing what others miss.</p>
+    </div>
+  </div>
+  
+  <!-- Timeline Section -->
+  <div class="content-card highlight-card">
+    <div class="category-tag pulse-animation">What's Happening Now</div>
+    <div class="section-header">
+      <i class="fas fa-rocket"></i>
+      <h2>Latest Momentum & Achievements</h2>
+    </div>
+    
+    <div class="timeline">
+      <div class="timeline-item spotlight">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">June 11, 2025 <span class="badge badge-today">Today</span></div>
+        <div class="timeline-content">
+          <h3>Publication: "Human Inquiry in an AI World"</h3>
+          <p>Published <a href="http://neuralglow.ai/blog/June/2025-06-11-why_be_a_researcher.html" class="inline-link">"Why Be a Researcher in a World Where Machines Can Do Everything in a Second?"</a> exploring the enduring value of human-led research in an age of AI automation. The article celebrates the uniquely human qualities of curiosity, intuition, and patient observation that machines cannot replicate, drawing from our years of studying cognitive resilience in the digital age.</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">June 10, 2025 <span class="badge badge-new">New</span></div>
+        <div class="timeline-content">
+          <h3>Website Redesign & Dark Mode Implementation</h3>
+          <p>Completed a comprehensive reorganization of NeuralGlow.ai with improved accessibility features including automatic dark/light mode based on user preferences. Enhanced cross-page navigation and optimized mobile experience for our growing readership.</p>
+        </div>
+      </div>
+      
+      <div class="view-more-container">
+        <button class="view-more-btn" id="view-more-btn">
+          <span>View More History</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+      </div>
+      
+      <div class="timeline-extended" id="timeline-extended" style="display: none;">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">March 5, 2025</div>
+          <div class="timeline-content">
+            <h3>Platform Redesign</h3>
+            <p>Launched our redesigned platform with improved accessibility features and a more intuitive knowledge navigation system.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="quote-section">
+    <span class="quote-mark left">"</span>
+    <p>In a world driven by algorithmic speed, our mid-2025 research confirms what we've long suspected: mindful progress creates deeper impact than hurried motion. Quality attention remains the scarcest and most valuable resource in the digital age.</p>
+    <span class="quote-mark right">"</span>
+  </div>
+  
+  <div class="content-card">
+    <div class="category-tag">Philosophy</div>
+    <div class="section-header">
+      <i class="fas fa-lightbulb"></i>
+      <h2>Patience, Curiosity, Amateur Mastery</h2>
+    </div>
+    <p>Driven by genuine interest and blissfully free from the constraints of grants or conflicts, our approach is deliberate, patient, and authentic—the turtle's way 🐢. Slow and steady wins the cognitive race, after all.</p>
+    
+    <img src="/assets/images/IMG_1255.jpeg" alt="Dandelion Spirit" class="featured-image">
+    
+    <p>Some things we dislike float away like dandelion seeds in the wind—but the important roots? They dig deeper, growing stronger with each passing season. So, stick around and watch the forest grow!</p>
+    
+    <p>Our work exists in the counterintuitive spaces between concepts. We believe that true understanding happens not through speedreading but through slow re-reading, not through rapid consumption but through thoughtful digestion, not through immediate conclusions but through comfortable uncertainty.</p>
+  </div>
+  
+  <!-- Values Section -->
+  <div class="content-grid">
+    <div class="grid-card">
+      <div class="category-tag">Values</div>
+      <h3><i class="fas fa-heart"></i> Authenticity</h3>
+      <p>We value genuine exploration over performative expertise. Our work embraces the messiness of real thinking, complete with false starts, confusion, and unexpected connections.</p>
+    </div>
+    
+    <div class="grid-card">
+      <div class="category-tag">Values</div>
+      <h3><i class="fas fa-balance-scale"></i> Independence</h3>
+      <p>Free from financial pressures and institutional constraints, we follow curiosity rather than funding opportunities. This freedom allows us to explore overlooked questions and undervalued perspectives.</p>
+    </div>
+    
+    <div class="grid-card">
+      <div class="category-tag">Values</div>
+      <h3><i class="fas fa-hands-helping"></i> Accessibility</h3>
+      <p>Complex ideas shouldn't be locked behind paywalls or jargon. We work to make thoughtful content available to anyone interested in exploring deeper thinking.</p>
+    </div>
+  </div>
+  
+  <!-- FAQ Section -->
+  <div class="content-card">
+    <div class="category-tag">Questions</div>
+    <div class="section-header">
+      <i class="fas fa-question-circle"></i>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question">
+          <i class="fas fa-caret-right"></i>
+          <h3>Is NeuralGlow an academic project?</h3>
+        </div>
+        <div class="faq-answer">
+          <p>Not in the traditional sense. While many of us have academic backgrounds, NeuralGlow operates outside institutional structures. We apply academic rigor but value accessibility and practical wisdom over specialized terminology.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <i class="fas fa-caret-right"></i>
+          <h3>How do you fund your research?</h3>
+        </div>
+        <div class="faq-answer">
+          <p>NeuralGlow is primarily self-funded through the contributors' other work. We occasionally accept no-strings donations but maintain our independence by avoiding corporate sponsorships or grant requirements that might direct our research priorities.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <i class="fas fa-caret-right"></i>
+          <h3>Can I contribute to NeuralGlow?</h3>
+        </div>
+        <div class="faq-answer">
+          <p>Yes! We welcome thoughtful contributions that align with our approach. The best first step is to spend time exploring our existing work, then reach out through the contact page with specific ideas for collaboration.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <i class="fas fa-caret-right"></i>
+          <h3>What does "amateur mastery" mean?</h3>
+        </div>
+        <div class="faq-answer">
+          <p>We embrace the original meaning of "amateur" as someone who pursues an interest out of love rather than professional obligation. Amateur mastery means developing deep expertise driven by genuine curiosity rather than external validation or career advancement.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Testimonials -->
+  <div class="content-card">
+    <div class="category-tag">Feedback</div>
+    <div class="section-header">
+      <i class="fas fa-comment-dots"></i>
+      <h2>What Others Are Saying</h2>
+    </div>
+    
+    <div class="testimonials">
+      <div class="testimonial">
+        <div class="testimonial-content">
+          <p>"NeuralGlow's research on digital mindfulness transformed how our educational program approaches technology integration. Their frameworks provide a refreshingly nuanced perspective beyond the typical 'tech good/tech bad' dichotomy."</p>
+        </div>
+        <div class="testimonial-author">
+          <div class="author-name">Dr. Elena Marquez</div>
+          <div class="author-title">Education Innovation Director</div>
+        </div>
+      </div>
+      
+      <div class="testimonial">
+        <div class="testimonial-content">
+          <p>"In a world of hot takes and reactive thinking, NeuralGlow reminds us of the value of patient observation and thoughtful synthesis. Their work has influenced how I approach both my creative projects and my everyday digital habits."</p>
+        </div>
+        <div class="testimonial-author">
+          <div class="author-name">Jamal Washington</div>
+          <div class="author-title">Author & Creative Director</div>
+        </div>
+      </div>
+      
+      <div class="testimonial">
+        <div class="testimonial-content">
+          <p>"The quiet brilliance of NeuralGlow's approach is how they make complex cognitive concepts not just understandable but immediately applicable. Their research has become essential reading for our design team."</p>
+        </div>
+        <div class="testimonial-author">
+          <div class="author-name">Lin Zhao</div>
+          <div class="author-title">UX Research Lead</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Join/Connect Section -->
+  <div class="content-card">
+    <div class="category-tag">Connect</div>
+    <div class="section-header">
+      <i class="fas fa-handshake"></i>
+      <h2>Join Our Research Community</h2>
+    </div>
+    
+    <p>Interested in being part of the NeuralGlow ecosystem? There are several ways to connect with our work:</p>
+    
+    <div class="connect-options">
+      <div class="connect-option">
+        <i class="fas fa-newspaper"></i>
+        <h3>The Quiet Letter</h3>
+        <p>Our monthly digest of insights, observations, and thoughtful questions—delivered without notification pings or tracking pixels.</p>
+        <a href="/newsletter" class="button">Subscribe</a>
+      </div>
+      
+      <div class="connect-option">
+        <i class="fas fa-book-reader"></i>
+        <h3>Research Access</h3>
+        <p>Browse our complete library of articles, case studies, and thought experiments in cognitive resilience.</p>
+        <a href="/research" class="button">Explore</a>
+      </div>
+      
+      <div class="connect-option">
+        <i class="fas fa-comments"></i>
+        <h3>Conversation Circles</h3>
+        <p>Join our monthly virtual discussions where we explore current research themes in small, thoughtful groups.</p>
+        <a href="/conversations" class="button">Learn More</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="social-share">
+    <a href="#" class="twitter" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="#" class="facebook" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="linkedin" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" class="pinterest" aria-label="Share on Pinterest"><i class="fab fa-pinterest-p"></i></a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/satire-journals/">Research</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-column">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="/quotes/">Quotes</a></li>
+        <li><a href="/notes/">Notes</a></li>
+        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="/terms.html">Terms of Use</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-column">
+      <h4>Connect With Us</h4>
+      <p>Follow our journey through the digital wilderness</p>
+      <div class="social-icons">
+        <a href="https://x.com/NeuralGlowAI" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/neuralglow-consulting" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="copyright">
+    &copy; 2025 NeuralGlow.ai | Slow. Curious. Silent.
+    <div style="margin-top: 10px; font-size: 0.8rem;">
+      <a href="https://uptimerobot.com/" target="_blank">
+        <i class="fas fa-leaf"></i> Monitored quietly by UptimeRobot
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle functionality
+  document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+    const nav = document.querySelector('nav');
+    if (nav.style.display === 'flex') {
+      nav.style.display = 'none';
+    } else {
+      nav.style.display = 'flex';
+    }
+  });
+  
+  // Initialize social sharing buttons
+  document.querySelectorAll('.social-share a').forEach(function(button) {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      const url = encodeURIComponent(window.location.href);
+      const title = encodeURIComponent(document.title);
+      let shareUrl;
+      
+      if (this.classList.contains('twitter')) {
+        shareUrl = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+      } else if (this.classList.contains('facebook')) {
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+      } else if (this.classList.contains('linkedin')) {
+        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+      } else if (this.classList.contains('pinterest')) {
+        const img = encodeURIComponent(document.querySelector('.featured-image').src);
+        shareUrl = `https://pinterest.com/pin/create/button/?url=${url}&media=${img}&description=${title}`;
+      }
+      
+      window.open(shareUrl, 'share-window', 'height=450, width=550, top=' + 
+        (window.innerHeight / 2 - 225) + ', left=' + 
+        (window.innerWidth / 2 - 275) + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+    });
+  });
+
+  // Add FAQ toggle functionality
+  document.querySelectorAll('.faq-question').forEach(function(question) {
+    question.addEventListener('click', function() {
+      this.classList.toggle('active');
+      const answer = this.nextElementSibling;
+      if (answer.style.maxHeight) {
+        answer.style.maxHeight = null;
+        this.querySelector('i').classList.replace('fa-caret-down', 'fa-caret-right');
+      } else {
+        answer.style.maxHeight = answer.scrollHeight + "px";
+        this.querySelector('i').classList.replace('fa-caret-right', 'fa-caret-down');
+      }
+    });
+  });
+  
+  // Add timeline "View More" functionality
+  const viewMoreBtn = document.getElementById('view-more-btn');
+  const timelineExtended = document.getElementById('timeline-extended');
+  
+  if (viewMoreBtn && timelineExtended) {
+    viewMoreBtn.addEventListener('click', function() {
+      if (timelineExtended.style.display === 'none') {
+        timelineExtended.style.display = 'block';
+        this.querySelector('span').textContent = 'Show Less';
+        this.querySelector('i').classList.replace('fa-chevron-down', 'fa-chevron-up');
+      } else {
+        timelineExtended.style.display = 'none';
+        this.querySelector('span').textContent = 'View More History';
+        this.querySelector('i').classList.replace('fa-chevron-up', 'fa-chevron-down');
+      }
+    });
+  }
+</script>
+
+<style>
+  /* Timeline Styles */
+  .timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px 0;
+  }
+  
+  .timeline::before {
+    content: '';
+    position: absolute;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--primary-light), var(--accent));
+    top: 0;
+    bottom: 0;
+    left: 50px;
+    border-radius: 3px;
+  }
+  
+  .timeline-item {
+    padding: 10px 40px 10px 70px;
+    position: relative;
+    margin-bottom: 35px;
+    transition: transform 0.3s ease;
+    animation: fadeInRight 0.5s ease forwards;
+    opacity: 0;
+  }
+  
+  .timeline-item:hover {
+    transform: translateX(5px);
+  }
+  
+  .timeline-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    position: absolute;
+    left: 43px;
+    top: 15px;
+    transform: translateX(-50%);
+    box-shadow: 0 0 0 4px rgba(255, 215, 64, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .timeline-item:hover .timeline-dot {
+    background: var(--primary);
+    box-shadow: 0 0 0 6px rgba(104, 159, 56, 0.3);
+  }
+  
+  .timeline-date {
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    display: inline-block;
+    padding: 3px 10px;
+    background-color: rgba(104, 159, 56, 0.1);
+    border-radius: 4px;
+  }
+  
+  .timeline-content {
+    background: #f9f9f9;
+    padding: 18px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    border-left: 3px solid var(--accent);
+    transition: all 0.3s ease;
+  }
+  
+  .timeline-item:hover .timeline-content {
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    border-left-color: var(--primary);
+    background: linear-gradient(to right, #f9f9f9, #f0f7e6);
+  }
+  
+  .timeline-content p {
+    text-align: justify;
+  }
+  
+  .timeline-content h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: var(--primary-dark);
+    font-weight: 600;
+  }
+  
+  /* Animation for timeline items */
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+  .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+  .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+  .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+  .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+  .timeline-item:nth-child(6) { animation-delay: 0.6s; }
+  .timeline-item:nth-child(7) { animation-delay: 0.7s; }
+  .timeline-item:nth-child(8) { animation-delay: 0.8s; }
+  
+  /* Timeline spotlight and badge styles */
+  .timeline-item.spotlight .timeline-content {
+    border-left: 3px solid #FF5722;
+    background: linear-gradient(to right, #FFF8E1, #FFF3E0);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .timeline-item.spotlight::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(255,215,64,0.15), transparent 70%);
+    z-index: -1;
+  }
+  
+  .timeline-item.spotlight .timeline-dot {
+    background: #FF5722;
+    box-shadow: 0 0 0 4px rgba(255, 87, 34, 0.3);
+  }
+  
+  .badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-left: 8px;
+    animation: pulse 2s infinite;
+  }
+  
+  .badge-today {
+    background-color: #FF5722;
+    color: white;
+  }
+  
+  .badge-new {
+    background-color: #8E24AA;
+    color: white;
+  }
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 5px rgba(255, 87, 34, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(255, 87, 34, 0);
+    }
+  }
+  
+  .inline-link {
+    color: #8E24AA;
+    font-weight: 500;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+  }
+  
+  .inline-link:hover {
+    color: #FF5722;
+  }
+  
+  .view-more-btn {
+    background: none;
+    border: none;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 15px auto;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .view-more-btn:hover {
+    background-color: var(--accent-light);
+  }
+  
+  .view-more-container {
+    text-align: center;
+    position: relative;
+  }
+  
+  .view-more-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(0,0,0,0.1);
+    z-index: 0;
+  }
+  
+  .view-more-btn {
+    position: relative;
+    z-index: 1;
+    background: white;
+  }
+  
+  .pulse-animation {
+    animation: pulse 2s infinite;
+  }
+  
+  /* FAQ Styles */
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .faq-item {
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  .faq-question {
+    padding: 15px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  
+  .faq-question:hover h3 {
+    color: var(--primary);
+  }
+  
+  .faq-question i {
+    color: var(--primary);
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .faq-question.active i {
+    transform: rotate(90deg);
+  }
+  
+  .faq-question h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .faq-answer {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .faq-answer p {
+    text-align: justify;
+  }
+  
+  /* Testimonials */
+  .testimonials {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 30px 0;
+  }
+  
+  .testimonial {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+  }
+  
+  .testimonial-content {
+    background: #f7f7f7;
+    padding: 25px;
+    position: relative;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+  }
+  
+  .testimonial-content::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 30px;
+    border-width: 15px 15px 0;
+    border-style: solid;
+    border-color: #f7f7f7 transparent;
+  }
+  
+  .testimonial-content p {
+    font-style: italic;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    text-align: justify;
+  }
+  
+  .testimonial-content::before {
+    content: '"';
+    font-size: 5rem;
+    color: rgba(0,0,0,0.05);
+    position: absolute;
+    top: -15px;
+    left: 10px;
+    font-family: Georgia, serif;
+  }
+  
+  .testimonial-author {
+    padding: 20px 25px;
+  }
+  
+  .author-name {
+    font-weight: 600;
+    color: var(--primary-dark);
+  }
+  
+  .author-title {
+    font-size: 0.9rem;
+    color: var(--text-light);
+  }
+  
+  /* Connect Section */
+  .connect-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 30px 0;
+  }
+  
+  .connect-option {
+    background: #f7f7f7;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .connect-option p {
+    text-align: justify;
+  }
+  
+  .connect-option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+  
+  .connect-option i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+  }
+  
+  .connect-option h3 {
+    margin-top: 0;
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 500;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+  }
+  
+  .button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .timeline::before {
+      left: 30px;
+    }
+    
+    .timeline-item {
+      padding-left: 50px;
+    }
+    
+    .timeline-dot {
+      left: 23px;
+    }
+    
+    .testimonials,
+    .connect-options {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+</body>
+</html>

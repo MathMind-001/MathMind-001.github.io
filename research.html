@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Research & Analysis — NeuralGlow.ai</title>
+<meta name="description" content="Advanced AI research on digital psychology, human-AI interaction, and algorithmic behavior. Evidence-based insights for the AI-driven workplace.">
+<meta name="keywords" content="NeuralGlow, AI research, artificial intelligence, digital psychology, human-AI collaboration, algorithmic behavior, AI ethics, workplace AI">  <meta name="author" content="NeuralGlow Research Division">
+  <link rel="icon" href="/assets/images/neuralglow_logo_darkpink_left.png" type="image/png">
+
+  <!-- EmailJS for subscription functionality -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+        // Initialize EmailJS with your user ID
+        emailjs.init("NeuralGlow.AI"); // Your EmailJS User ID
+    })();
+  </script>
+  <!-- Subscription functionality -->
+  <script src="/assets/js/subscription.js" defer></script>
+  <!-- Dark Mode functionality -->
+  <script src="/assets/js/dark-mode.js" defer></script>
+  <!-- Theme color meta tag for browser UI -->
+  <meta name="color-scheme" content="light dark">
+
+  <!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    /* Base Styles */
+    :root {
+      /* Light mode (default) - Professional AI Theme */
+      --primary: #2563EB; /* Modern Blue */
+      --primary-light: #3B82F6; /* Light Blue */
+      --primary-dark: #1E40AF;
+      --secondary: #7C3AED; /* Purple Accent */
+      --accent: #06B6D4; /* Cyan */
+      --accent-light: #67E8F9;
+      --dark: #0F172A; /* Slate Dark */
+      --light: #F8FAFC; /* Slate Light */
+      --gray: #64748B; /* Slate Gray */
+      --gray-light: #CBD5E1;
+      --card-bg: #FFFFFF;
+      --success: #10B981; /* Emerald */
+      --warning: #F59E0B; /* Amber */
+      --error: #EF4444; /* Red */
+      --link: #2563EB;
+      --tag-bg: #EEF2FF; /* Blue Tint */
+      --bg-color: #FFFFFF;
+      --bg-gradient: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+      --header-bg: rgba(15, 23, 42, 0.95); /* Glass effect */
+      --border-color: #E2E8F0;
+      --text-color: #0F172A;
+      --text-muted: #64748B;
+      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --header-text: #FFFFFF;
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Dark mode - AI Professional */
+    [data-theme="dark"] {
+      --primary: #3B82F6;
+      --primary-light: #60A5FA;
+      --primary-dark: #2563EB;
+      --secondary: #8B5CF6;
+      --accent: #06B6D4;
+      --accent-light: #67E8F9;
+      --dark: #F8FAFC;
+      --light: #0F172A;
+      --gray: #94A3B8;
+      --gray-light: #475569;
+      --card-bg: #1E293B;
+      --success: #10B981;
+      --warning: #F59E0B;
+      --error: #EF4444;
+      --link: #60A5FA;
+      --tag-bg: #1E3A8A;
+      --bg-color: #0F172A;
+      --bg-gradient: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      --header-bg: rgba(30, 41, 59, 0.95);
+      --border-color: #334155;
+      --text-color: #F8FAFC;
+      --text-muted: #94A3B8;
+      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+      --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+      --header-text: #F8FAFC;
+      --glass-bg: rgba(0, 0, 0, 0.2);
+      --glass-border: rgba(255, 255, 255, 0.1);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: all 0.3s ease;
+      min-height: 100vh;
+    }
+
+    /* Enhanced Typography */
+    h1, h2, h3, h4, h5 {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.2;
+      color: var(--text-color);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+    
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+    
+    h3 {
+      font-size: clamp(1.25rem, 3vw, 1.5rem);
+      margin-bottom: 0.8rem;
+      color: var(--text-color);
+    }
+    
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+      text-align: justify;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    
+    a {
+      color: var(--link);
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    
+    a:hover {
+      color: var(--secondary);
+      transform: translateY(-1px);
+    }
+
+    /* Modern Header Styles */
+    header {
+      background: var(--header-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      color: var(--header-text);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--glass-border);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--glass-bg);
+      z-index: -1;
+    }
+
+    header .logo img {
+      height: 45px;
+      filter: brightness(1.1) contrast(1.1);
+      transition: transform 0.3s ease;
+    }
+
+    header .logo img:hover {
+      transform: scale(1.05);
+    }
+
+    header nav {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    header nav a {
+      color: var(--header-text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    header nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--secondary) 100%);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateX(-50%);
+      border-radius: 1px;
+    }
+    
+    header nav a:hover::after {
+      width: 100%;
+    }
+
+    header nav a:hover {
+      color: var(--accent-light);
+      transform: translateY(-1px);
+    }
+    
+    /* Enhanced Theme Toggle */
+    .theme-switch-wrapper {
+      display: flex;
+      align-items: center;
+      margin-left: 20px;
+    }
+    
+    .theme-switch {
+      display: inline-block;
+      position: relative;
+      width: 60px;
+      height: 30px;
+    }
+    
+    .theme-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, var(--gray-light) 0%, var(--gray) 100%);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 30px;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 24px;
+      width: 24px;
+      left: 3px;
+      bottom: 3px;
+      background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    input:checked + .slider {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    }
+    
+    input:checked + .slider:before {
+      transform: translateX(30px);
+      background: linear-gradient(135deg, #FFFFFF 0%, var(--accent-light) 100%);
+    }
+    
+    .slider .icon {
+      position: absolute;
+      top: 7px;
+      font-size: 14px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      color: var(--text-color);
+    }
+    
+    .slider .sun {
+      left: 8px;
+      opacity: 1;
+      color: #F59E0B;
+    }
+    
+    .slider .moon {
+      right: 8px;
+      opacity: 0;
+      color: #6366F1;
+    }
+    
+    input:checked + .slider .sun {
+      opacity: 0;
+      transform: rotate(180deg);
+    }
+    
+    input:checked + .slider .moon {
+      opacity: 1;
+      transform: rotate(0deg);
+    }
+    
+    /* Enhanced Main Content */
+    .page-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      position: relative;
+    }
+
+    .page-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+      transform: translateX(-50%);
+      border-radius: 2px;
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+    }
+    
+    .page-intro {
+      max-width: 900px;
+      margin: 0 auto 4rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-intro::after {
+      content: '';
+      position: absolute;
+      top: -2rem;
+      left: 50%;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      opacity: 0.1;
+      z-index: -1;
+    }
+    
+    .page-intro p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+    
+    /* Research Puzzle Styles */
+    .research-puzzle {
+      margin-top: 3rem;
+      text-align: center;
+    }
+    
+    .puzzle-teaser {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .teaser-text {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    
+    .reveal-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .reveal-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+    
+    .reveal-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+    }
+    
+    .research-areas {
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+    }
+    
+    .research-areas.expanded {
+      max-height: 2000px;
+      opacity: 1;
+      padding: 2rem 0;
+    }
+    
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      perspective: 1000px;
+    }
+    
+    .research-card {
+      height: 220px;
+      position: relative;
+      cursor: pointer;
+    }
+    
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+    }
+    
+    .research-card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+    
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+    
+    .card-front {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+    }
+    
+    .card-back {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      transform: rotateY(180deg);
+    }
+    
+    .research-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    
+    .card-front h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+    
+    .explore-prompt {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+      opacity: 0.8;
+      position: absolute;
+      bottom: 1rem;
+    }
+    
+    .card-back p {
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+    
+    .research-link {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .research-link:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Modern Filter Categories */
+    .filter-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 4rem;
+      padding: 1rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 4rem;
+    }
+    
+    .filter-btn {
+      padding: 0.75rem 1.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 50px;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .filter-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .filter-btn:hover::before {
+      left: 100%;
+    }
+    
+    .filter-btn:hover {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+    }
+
+    /* Enhanced Article Cards */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+      padding: 0 1rem;
+    }
+    
+    .article-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border-color);
+      position: relative;
+      backdrop-filter: blur(10px);
+    }
+
+    .article-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+      border-radius: 20px 20px 0 0;
+    }
+    
+    .article-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--card-shadow-hover);
+      border-color: var(--primary);
+    }
+
+    .article-card:hover::before {
+      background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 50%, var(--secondary) 100%);
+      animation: gradient-shift 2s infinite;
+    }
+
+    @keyframes gradient-shift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    .article-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .article-card:hover .article-img {
+      transform: scale(1.05);
+    }
+    
+    .article-content {
+      padding: 2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    
+    .article-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .article-tag {
+      font-size: 0.75rem;
+      background: linear-gradient(135deg, var(--tag-bg) 0%, var(--border-color) 100%);
+      color: var(--primary);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .article-card:hover .article-tag {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      transform: translateY(-1px);
+    }
+    
+    .article-title {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+      color: var(--text-color);
+      font-weight: 600;
+    }
+    
+    .article-title a {
+      color: var(--text-color);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .article-title a:hover {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .article-excerpt {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      text-align: justify;
+      line-height: 1.7;
+      flex-grow: 1;
+    }
+    
+    .article-meta {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.5rem;
+      position: relative;
+    }
+
+    .article-meta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+    }
+    
+    .article-date, .article-read {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .article-date i, .article-read i {
+      color: var(--primary);
+      font-size: 0.9rem;
+    }
+
+    /* Enhanced Social Sharing Sidebar */
+    .social-sidebar {
+      position: fixed;
+      left: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      z-index: 50;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      padding: 1rem;
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+    }
+    
+    .social-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--card-bg) 0%, var(--light) 100%);
+      color: var(--primary);
+      border-radius: 15px;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-icon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .social-icon:hover::before {
+      left: 100%;
+    }
+    
+    .social-icon:hover {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+    }
+
+    /* Modern CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      border-radius: 30px;
+      padding: 4rem 3rem;
+      margin: 6rem 0 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3);
+      border: 1px solid var(--glass-border);
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .cta-section::after {
+      content: '🚀';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 32px;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    }
+    
+    .cta-title {
+      margin-bottom: 1.5rem;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: white;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .cta-description {
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      font-size: 1.1rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .cta-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+      flex-direction: column;
+      gap: 1rem;
+      z-index: 1;
+    }
+    
+    .cta-input {
+      flex-grow: 1;
+      padding: 1.2rem 1.8rem;
+      border: none;
+      border-radius: 15px;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .cta-input:focus {
+      outline: none;
+      background: white;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    .cta-button {
+      padding: 1.2rem 2rem;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+      color: var(--dark);
+      border: none;
+      border-radius: 15px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);
+    }
+    
+    .cta-button:hover {
+      background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(6, 182, 212, 0.6);
+    }
+    
+    .input-feedback {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.8);
+      display: none;
+      text-align: left;
+    }
+    
+    .subscription-form input[type="email"]:valid {
+      border-left: 4px solid var(--success);
+    }
+    
+    .subscription-form input[type="email"]:invalid:not(:placeholder-shown) {
+      border-left: 4px solid var(--error);
+    }
+    
+    .subscription-form input[type="email"]:invalid:not(:placeholder-shown) + .input-feedback {
+      display: block;
+    }
+    
+    .subscription-loading, .subscription-success, .subscription-error {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .subscription-success i {
+      color: var(--success);
+    }
+    
+    .subscription-error i {
+      color: var(--error);
+    }
+    
+    .try-again-btn {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+      color: var(--dark);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      margin-top: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .try-again-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);
+    }
+    
+    .small-note {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Enhanced Footer */
+    footer {
+      background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+      color: #e2e8f0;
+      padding: 4rem 0 2rem;
+      margin-top: 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+    }
+    
+    .footer-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: white;
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .footer-links a {
+      color: #cbd5e1;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      font-weight: 500;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .footer-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateX(-50%);
+    }
+    
+    .footer-links a:hover {
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    .footer-links a:hover::after {
+      width: 100%;
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #334155;
+      width: 100%;
+    }
+    
+    .copyright {
+      font-size: 0.95rem;
+      color: #94a3b8;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-meta {
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+    
+    .footer-meta a {
+      color: #64748b;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-meta a:hover {
+      color: var(--accent-light);
+    }
+
+    /* Enhanced Responsive Design */
+    @media (max-width: 1200px) {
+      .social-sidebar {
+        position: static;
+        flex-direction: row;
+        justify-content: center;
+        margin: 3rem 0;
+        background: transparent;
+        backdrop-filter: none;
+        border: none;
+        padding: 0;
+      }
+      
+      .page-container {
+        padding: 3rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .articles-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0;
+      }
+      
+      .research-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      
+      .research-card {
+        height: 200px;
+      }
+      
+      .reveal-btn {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.9rem;
+      }
+
+      .article-card {
+        border-radius: 15px;
+      }
+
+      .article-content {
+        padding: 1.5rem;
+      }
+      
+      .cta-section {
+        padding: 3rem 2rem;
+        border-radius: 20px;
+        margin: 4rem 0 3rem;
+      }
+      
+      .cta-input, .cta-button {
+        width: 100%;
+        border-radius: 12px;
+      }
+      
+      h1 {
+        font-size: clamp(2rem, 8vw, 2.5rem);
+      }
+      
+      header {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+        padding: 1.5rem;
+      }
+      
+      header nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+      
+      .filter-container {
+        justify-content: center;
+        margin-bottom: 3rem;
+        padding: 0.75rem;
+        border-radius: 15px;
+      }
+
+      .filter-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+      }
+
+      .page-intro {
+        margin-bottom: 3rem;
+      }
+
+      .page-intro p {
+        font-size: 1.1rem;
+      }
+
+      .article-title {
+        font-size: 1.25rem;
+      }
+
+      .social-sidebar {
+        gap: 0.75rem;
+      }
+
+      .social-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-container {
+        padding: 2rem 1rem;
+      }
+
+      .filter-container {
+        gap: 0.5rem;
+      }
+
+      .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+      }
+
+      .article-content {
+        padding: 1.25rem;
+      }
+
+      .cta-section {
+        padding: 2.5rem 1.5rem;
+      }
+
+      .footer-links {
+        gap: 1.5rem;
+      }
+    }
+
+    /* Performance optimizations */
+    .article-card,
+    .filter-btn,
+    .social-icon,
+    .cta-button {
+      will-change: transform;
+    }
+
+    /* Smooth loading animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .article-card {
+      animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .article-card:nth-child(1) { animation-delay: 0.1s; }
+    .article-card:nth-child(2) { animation-delay: 0.2s; }
+    .article-card:nth-child(3) { animation-delay: 0.3s; }
+
+    /* Focus states for accessibility */
+    .filter-btn:focus,
+    .cta-button:focus,
+    .cta-input:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+      :root {
+        --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        --border-color: #000000;
+      }
+      
+      [data-theme="dark"] {
+        --card-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.3);
+        --border-color: #ffffff;
+      }
+    }
+
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <a href="/"><img src="/assets/images/neuralglow_logo_darkpink_left.png" alt="NeuralGlow Logo"></a>
+  </div>
+  <nav>
+    <a href="/about.html">About</a>
+    <a href="/research.html">Research</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/contact.html">Contact</a>
+    <div class="theme-switch-wrapper">
+      <label class="theme-switch" for="theme-toggle">
+        <input type="checkbox" id="theme-toggle" />
+        <span class="slider">
+          <i class="fas fa-sun icon sun"></i>
+          <i class="fas fa-moon icon moon"></i>
+        </span>
+      </label>
+    </div>
+  </nav>
+</header>
+
+<div class="social-sidebar">
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://neuralglow.ai/research.html" class="social-icon" target="_blank" aria-label="Share on LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=Check%20out%20NeuralGlow's%20research%20on%20workplace%20psychology%20and%20productivity&url=https://neuralglow.ai/research.html" class="social-icon" target="_blank" aria-label="Share on Twitter">
+    <i class="fab fa-twitter"></i>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://neuralglow.ai/research.html" class="social-icon" target="_blank" aria-label="Share on Facebook">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://medium.com/new-story?url=https://neuralglow.ai/research.html&title=Research%20on%20Workplace%20Psychology%20and%20Productivity%20by%20NeuralGlow" class="social-icon" target="_blank" aria-label="Share on Medium">
+    <i class="fab fa-medium-m"></i>
+  </a>
+</div>
+
+<div class="page-container">
+  <div class="page-intro">
+    <h1>AI Research & Analysis</h1>
+    <p>Pioneering research at the intersection of artificial intelligence, digital psychology, and human behavior. Our evidence-based investigations explore how AI systems shape modern work, decision-making, and digital adulthood.</p>
+    
+    <div class="research-puzzle">
+      <div class="puzzle-teaser">
+        <span class="teaser-text">Discover our research domains</span>
+        <button id="reveal-research" class="reveal-btn" aria-expanded="false" aria-controls="research-areas">
+          <span class="reveal-icon">
+            <i class="fas fa-lightbulb"></i>
+          </span>
+          <span class="btn-text">Explore Research Focus</span>
+        </button>
+      </div>
+      
+      <div id="research-areas" class="research-areas collapsed">
+        <div class="research-grid">
+          <div class="research-card" data-category="ai-human">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fas fa-brain research-icon"></i>
+                <h3>AI-Human Interaction Models</h3>
+                <span class="explore-prompt">Click to explore</span>
+              </div>
+              <div class="card-back">
+                <p>Developing frameworks to understand complex relationships between humans and intelligent systems</p>
+                <a href="#ai-human" class="research-link">View Publications</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="research-card" data-category="psychology">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fas fa-head-side-brain research-icon"></i>
+                <h3>Digital Psychology</h3>
+                <span class="explore-prompt">Click to explore</span>
+              </div>
+              <div class="card-back">
+                <p>Studying cognitive, emotional, and behavioral impacts of persistent AI engagement</p>
+                <a href="#psychology" class="research-link">View Publications</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="research-card" data-category="decision-making">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fas fa-sitemap research-icon"></i>
+                <h3>Algorithmic Decision-Making</h3>
+                <span class="explore-prompt">Click to explore</span>
+              </div>
+              <div class="card-back">
+                <p>Analyzing how AI-driven decisions influence organizational dynamics and outcomes</p>
+                <a href="#decision" class="research-link">View Publications</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="research-card" data-category="workplace">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fas fa-laptop-code research-icon"></i>
+                <h3>Workplace Transformation</h3>
+                <span class="explore-prompt">Click to explore</span>
+              </div>
+              <div class="card-back">
+                <p>Measuring productivity, collaboration, and skill evolution in AI-augmented environments</p>
+                <a href="#workplace" class="research-link">View Publications</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="research-card" data-category="adulthood">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fas fa-user-graduate research-icon"></i>
+                <h3>Digital Adulthood</h3>
+                <span class="explore-prompt">Click to explore</span>
+              </div>
+              <div class="card-back">
+                <p>Investigating identity formation and social development in AI-mediated spaces</p>
+                <a href="#adulthood" class="research-link">View Publications</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="research-card" data-category="ethics">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fas fa-balance-scale research-icon"></i>
+                <h3>AI Ethics & Governance</h3>
+                <span class="explore-prompt">Click to explore</span>
+              </div>
+              <div class="card-back">
+                <p>Exploring responsible innovation, transparency, and ethical frameworks for intelligent systems</p>
+                <a href="#ethics" class="research-link">View Publications</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="research-card" data-category="creativity">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fas fa-paint-brush research-icon"></i>
+                <h3>Computational Creativity</h3>
+                <span class="explore-prompt">Click to explore</span>
+              </div>
+              <div class="card-back">
+                <p>Researching co-creation processes between humans and generative AI systems</p>
+                <a href="#creativity" class="research-link">View Publications</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="research-card" data-category="bias">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fas fa-balance-scale-right research-icon"></i>
+                <h3>Algorithmic Bias Mitigation</h3>
+                <span class="explore-prompt">Click to explore</span>
+              </div>
+              <div class="card-back">
+                <p>Developing methods to identify and address biases in machine learning systems</p>
+                <a href="#bias" class="research-link">View Publications</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="filter-container">
+    <button class="filter-btn active" data-filter="all">All Research</button>
+    <button class="filter-btn" data-filter="psychology">Digital Psychology</button>
+    <button class="filter-btn" data-filter="ai">AI Ethics</button>
+    <button class="filter-btn" data-filter="productivity">AI & Productivity</button>
+    <button class="filter-btn" data-filter="satire">Satirical Analysis</button>
+    <button class="filter-btn" data-filter="organizational">AI in Organizations</button>
+  </div>
+  
+  <div class="articles-grid">
+    <!-- July 2025 Featured Article -->
+    <article class="article-card" data-category="psychology ai satire organizational">
+      <img src="/assets/images/algorthmic-paradox-ng.PNG" alt="Algorithmic Paradox of Digital Adulthood" class="article-img">
+      <div class="article-content">
+        <div class="article-tags">
+          <span class="article-tag">AI Ethics</span>
+          <span class="article-tag">Digital Identity</span>
+          <span class="article-tag">Human-AI Collaboration</span>
+        </div>
+        <h3 class="article-title">
+          <a href="http://neuralglow.ai/satire-journals/neuralglow-digital-adulthood-paradox.html">The Algorithmic Paradox of Digital Adulthood</a>
+        </h3>
+        <p class="article-excerpt">A comprehensive analysis of how AI systems define human maturity, exploring the profound disconnect between algorithmic assumptions and human complexity through a case study of Google's age verification failure.</p>
+        <div class="article-meta">
+          <div class="article-date">
+            <i class="far fa-calendar-alt"></i> July 1, 2025
+          </div>
+          <div class="article-read">
+            <i class="far fa-clock"></i> 12 min read
+          </div>
+        </div>
+      </div>
+    </article>
+    
+    <!-- Original Article -->
+    <article class="article-card" data-category="organizational psychology research">
+      <img src="/assets/images/professional-dysfunction.png" alt="Professional Dysfunction Matrix" class="article-img">
+      <div class="article-content">
+        <div class="article-tags">
+          <span class="article-tag">Research Analysis</span>
+          <span class="article-tag">Organizational Psychology</span>
+        </div>
+        <h3 class="article-title">
+          <a href="/satire-journals/anatomy-of-professional-failure.html">Decoding Professional Incompetence: A Research-Based Analysis</a>
+        </h3>
+        <p class="article-excerpt">This diagnostic study examines how credentials shield incompetence across legal, medical, and administrative domains, creating "imperial administrative ecosystems" where accountability becomes optional.</p>
+        <div class="article-meta">
+          <div class="article-date">
+            <i class="far fa-calendar-alt"></i> August 14, 2025
+          </div>
+          <div class="article-read">
+            <i class="far fa-clock"></i> 16 min read
+          </div>
+        </div>
+      </div>
+    </article>
+    
+    <article class="article-card" data-category="psychology satire organizational">
+      <img src="/assets/images/AD2548C9-5197-456E-B72F-C94742850E6E.png" alt="Clown Network Concept" class="article-img">
+      <div class="article-content">
+        <div class="article-tags">
+          <span class="article-tag">Satirical Analysis</span>
+          <span class="article-tag">Digital Psychology</span>
+        </div>
+        <h3 class="article-title">
+          <a href="/satire-journals/clown_network_firewall_article_responsive.html">Clown Network Firewall: A Satirical Analysis</a>
+        </h3>
+        <p class="article-excerpt">An exploration of psychological defense mechanisms in absurd organizational conditions. Because sometimes, you need a good firewall to keep the clowns out.</p>
+        <div class="article-meta">
+          <div class="article-date">
+            <i class="far fa-calendar-alt"></i> April 15, 2025
+          </div>
+          <div class="article-read">
+            <i class="far fa-clock"></i> 9 min read
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  
+  <div class="cta-section">
+    <h2 class="cta-title">Join Our AI Research Community</h2>
+    <p class="cta-description">Get exclusive access to cutting-edge AI research, participate in digital psychology studies, and receive insights on the future of human-AI collaboration before they're published.</p>
+    <form class="cta-form subscription-form" id="newsletter-form">
+      <input type="email" class="cta-input" name="email" placeholder="Your email address" required>
+      <div class="input-feedback">Please enter a valid email address</div>
+      <button type="submit" class="cta-button">Join Research Community</button>
+    </form>
+    <p class="small-note">We respect your digital autonomy. Our AI research updates are carefully curated and valuable.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-logo">NeuralGlow AI</div>
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/research.html">Research</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy</a>
+    </div>
+    <div class="footer-bottom">
+      <p class="copyright">&copy; 2025 NeuralGlow.ai — All rights reserved</p>
+      <p class="footer-meta">
+        <a href="https://uptimerobot.com/" target="_blank">🌿 Monitored quietly by UptimeRobot</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Category filtering functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const articles = document.querySelectorAll('.article-card');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+        
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Filter articles
+        articles.forEach(article => {
+          if (filter === 'all' || article.getAttribute('data-category').includes(filter)) {
+            article.style.display = 'block';
+          } else {
+            article.style.display = 'none';
+          }
+        });
+      });
+    });
+  
+    // Research area reveal functionality
+    const revealButton = document.getElementById('reveal-research');
+    const researchAreas = document.getElementById('research-areas');
+    
+    if (revealButton && researchAreas) {
+      revealButton.addEventListener('click', function() {
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        
+        // Toggle button state
+        this.setAttribute('aria-expanded', !isExpanded);
+        
+        // Toggle research areas visibility
+        if (isExpanded) {
+          researchAreas.classList.remove('expanded');
+          setTimeout(() => {
+            researchAreas.classList.add('collapsed');
+            this.querySelector('.btn-text').textContent = 'Explore Research Focus';
+            this.querySelector('.reveal-icon i').className = 'fas fa-lightbulb';
+          }, 50);
+        } else {
+          researchAreas.classList.remove('collapsed');
+          researchAreas.classList.add('expanded');
+          this.querySelector('.btn-text').textContent = 'Hide Research Areas';
+          this.querySelector('.reveal-icon i').className = 'fas fa-times';
+        }
+        
+        // Smooth scroll to research areas when expanded
+        if (!isExpanded) {
+          setTimeout(() => {
+            researchAreas.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 300);
+        }
+      });
+    }
+  });
+</script>
+</body>
+</html>
