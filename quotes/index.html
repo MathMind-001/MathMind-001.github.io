@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glow Notes: Inspiration Blog — NeuralGlow.ai</title>
+<meta name="description" content="A collection of thoughtful notes and quotes from the Glow Forest to plant calmness, curiosity, and clarity.">
+<link rel="icon" href="/assets/images/neuralglow_logo_darkpink_left.png" type="image/png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    /* General Styles */
+    :root {
+        /* Light mode (default) */
+        --bg-color: #f5f7f0;
+        --text-color: #2c3e50;
+        --header-gradient-start: #8E24AA;
+        --header-gradient-end: #AB47BC;
+        --header-text: #ffffff;
+        --card-bg: #ffffff;
+        --card-border: rgba(0,0,0,0.1);
+        --link-color: #8E24AA;
+        --hover-color: #6A1B9A;
+        --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --quote-bg: #ffffff;
+        --quote-border: #e0e0e0;
+        --primary: #8E24AA;
+    }
+    
+    /* Dark mode */
+    [data-theme="dark"] {
+        --bg-color: #1A1A1A;
+        --text-color: #E0E0E0;
+        --header-gradient-start: #7B1FA2;
+        --header-gradient-end: #9C27B0;
+        --header-text: #ffffff;
+        --card-bg: #2D2D2D;
+        --card-border: rgba(255,255,255,0.1);
+        --link-color: #BA68C8;
+        --hover-color: #CE93D8;
+        --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        --quote-bg: #2D2D2D;
+        --quote-border: #444444;
+        --primary: #9C27B0;
+    }
+    
+    html { scroll-behavior: smooth; }
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', 'Poppins', sans-serif;
+        background: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.8;
+        overflow-x: hidden;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    /* Header Styling */
+    header {
+        background: var(--primary);
+        color: var(--header-text);
+        padding: 15px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        transition: background 0.3s ease;
+    }
+    header .logo {
+        display: flex;
+        align-items: center;
+    }
+    header .logo img {
+        height: 45px;
+        transition: transform 0.3s;
+    }
+    header .logo img:hover {
+        transform: scale(1.05);
+    }
+    header .logo span {
+        font-weight: 600;
+        margin-left: 10px;
+        font-size: 1.2rem;
+        letter-spacing: 0.5px;
+    }
+    header nav {
+        display: flex;
+        gap: 10px;
+    }
+    header nav a {
+        color: #ffffff;
+        text-decoration: none;
+        padding: 8px 15px;
+        border-radius: 4px;
+        font-weight: 500;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+    }
+    header nav a:hover {
+        background: rgba(255,255,255,0.2);
+        transform: translateY(-2px);
+    }
+    header nav a.active {
+        background: rgba(255,255,255,0.25);
+    }
+    
+    /* Theme Toggle Styles */
+    .theme-switch-wrapper {
+        display: flex;
+        align-items: center;
+        margin-left: 15px;
+    }
+    
+    .theme-switch {
+        display: inline-block;
+        position: relative;
+        width: 50px;
+        height: 25px;
+    }
+    
+    .theme-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(255,255,255,0.3);
+        transition: .4s;
+        border-radius: 25px;
+    }
+    
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 19px;
+        width: 19px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+    }
+    
+    input:checked + .slider {
+        background-color: rgba(0,0,0,0.3);
+    }
+    
+    input:checked + .slider:before {
+        transform: translateX(25px);
+    }
+    
+    .slider .icon {
+        position: absolute;
+        top: 5px;
+        font-size: 13px;
+        transition: .4s;
+        color: white;
+    }
+    
+    .slider .sun {
+        left: 7px;
+        opacity: 1;
+    }
+    
+    .slider .moon {
+        right: 7px;
+        opacity: 0;
+    }
+    
+    input:checked + .slider .sun {
+        opacity: 0;
+    }
+    
+    input:checked + .slider .moon {
+        opacity: 1;
+    }
+    
+    /* Main Content Area */
+    .container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+    
+    /* Hero Section */
+    .hero {
+        text-align: center;
+        margin-bottom: 60px;
+        padding: 60px 20px;
+        background: linear-gradient(to right, rgba(224, 242, 194, 0.5), rgba(200, 230, 150, 0.6));
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .hero h1 {
+        font-size: 3rem;
+        color: #33691e;
+        margin-bottom: 20px;
+        animation: fadeIn 2s ease;
+        font-weight: 700;
+    }
+    .hero p {
+        max-width: 700px;
+        margin: 0 auto 30px;
+        font-size: 1.1rem;
+        color: #455a64;
+    }
+    
+    /* Category Filter */
+    .category-filter {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 40px;
+    }
+    .category-btn {
+        background: #e8f5e9;
+        border: 1px solid #aed581;
+        color: #33691e;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .category-btn:hover, .category-btn.active {
+        background: #8bc34a;
+        color: white;
+    }
+    
+    /* Cards Grid */
+    .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 25px;
+        margin-bottom: 50px;
+    }
+    .card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        transition: transform 0.3s, box-shadow 0.3s;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    .card-img {
+        height: 180px;
+        overflow: hidden;
+    }
+    .card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+    }
+    .card:hover .card-img img {
+        transform: scale(1.05);
+    }
+    .card-content {
+        padding: 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .card-tag {
+        display: inline-block;
+        background: #e8f5e9;
+        color: #558b2f;
+        font-size: 0.8rem;
+        padding: 4px 10px;
+        border-radius: 12px;
+        margin-bottom: 12px;
+    }
+    .card h3 {
+        margin: 0 0 15px;
+        font-size: 1.4rem;
+        line-height: 1.4;
+        color: #33691e;
+    }
+    .card p {
+        color: #607d8b;
+        margin: 0 0 20px;
+        line-height: 1.6;
+        flex-grow: 1;
+    }
+    .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: auto;
+        font-size: 0.85rem;
+        color: #9e9e9e;
+    }
+    .card-date {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .social-share {
+        display: flex;
+        gap: 10px;
+    }
+    .social-btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #f5f5f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #7cb342;
+        transition: all 0.3s;
+        cursor: pointer;
+    }
+    .social-btn:hover {
+        background: #7cb342;
+        color: white;
+    }
+    
+    /* Featured Quote Section */
+    .featured-quote {
+        background: linear-gradient(120deg, #c5e1a5, #dcedc8);
+        padding: 40px;
+        border-radius: 12px;
+        margin: 60px 0;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    .featured-quote::before {
+        content: '"';
+        position: absolute;
+        top: -30px;
+        left: 20px;
+        font-size: 150px;
+        color: rgba(139, 195, 74, 0.2);
+        font-family: Georgia, serif;
+    }
+    .featured-quote blockquote {
+        font-size: 1.8rem;
+        font-style: italic;
+        color: #33691e;
+        margin: 0 0 20px;
+        position: relative;
+        z-index: 1;
+    }
+    .featured-quote .author {
+        text-align: right;
+        font-weight: 500;
+        color: #558b2f;
+    }
+    
+    /* Newsletter Section */
+    .newsletter {
+        background: white;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        text-align: center;
+        margin: 60px 0;
+    }
+    .newsletter h3 {
+        color: #33691e;
+        margin-top: 0;
+    }
+    .newsletter-form {
+        display: flex;
+        max-width: 500px;
+        margin: 20px auto 0;
+    }
+    .newsletter-form input {
+        flex-grow: 1;
+        border: 1px solid #ddd;
+        padding: 12px 15px;
+        border-radius: 4px 0 0 4px;
+        font-size: 1rem;
+        outline: none;
+    }
+    .newsletter-form button {
+        background: #7cb342;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .newsletter-form button:hover {
+        background: #6A1B9A;
+    }
+    
+    /* Footer Styling */
+    footer {
+        background: #8E24AA;
+        color: #e8f5e9;
+        padding: 50px 20px 30px;
+        margin-top: 80px;
+    }
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+    }
+    .footer-column h4 {
+        color: #c5e1a5;
+        margin-top: 0;
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+    .footer-column ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .footer-column ul li {
+        margin-bottom: 10px;
+    }
+    .footer-column a {
+        color: #e8f5e9;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    .footer-column a:hover {
+        color: #aed581;
+        text-decoration: underline;
+    }
+    .footer-social {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+    .footer-social a {
+        width: 36px;
+        height: 36px;
+        background: rgba(255,255,255,0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.3s;
+    }
+    .footer-social a:hover {
+        background: rgba(255,255,255,0.2);
+        transform: translateY(-3px);
+    }
+    .footer-bottom {
+        text-align: center;
+        padding-top: 30px;
+        margin-top: 30px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        font-size: 0.9rem;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        header {
+            padding: 15px 20px;
+            flex-direction: column;
+            gap: 15px;
+        }
+        header nav {
+            width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+        }
+        .featured-quote blockquote {
+            font-size: 1.4rem;
+        }
+    }
+</style>
+<!-- Dark Mode functionality -->
+<script src="/assets/js/dark-mode.js" defer></script>
+<!-- Theme color meta tag for browser UI -->
+<meta name="color-scheme" content="light dark">
+</head>
+<body>
+
+<header>
+  <div class="logo" onclick="window.location.href='/'" style="cursor: pointer;">
+    <img src="/assets/images/neuralglow_logo_darkpink_left.png" alt="NeuralGlow Logo">
+    <span>NeuralGlow</span>
+  </div>
+  <nav>
+    <a href="/about.html">About</a>
+    <a href="/research.html">Research</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/quotes/" class="active">Notes</a>
+    <div class="theme-switch-wrapper">
+      <label class="theme-switch" for="theme-toggle">
+        <input type="checkbox" id="theme-toggle" />
+        <span class="slider">
+          <i class="fas fa-sun icon sun"></i>
+          <i class="fas fa-moon icon moon"></i>
+        </span>
+      </label>
+    </div>
+  </nav>
+</header>
+
+<div class="container">
+  <section class="hero">
+    <h1>Glow Seeds: Notes & Wisdom</h1>
+    <p>A collection of thoughtful notes and inspirational quotes from the Glow Forest to plant calmness, curiosity, and clarity in your everyday life.</p>
+    <div class="category-filter">
+      <button class="category-btn active">All</button>
+      <button class="category-btn">Mindfulness</button>
+      <button class="category-btn">Growth</button>
+      <button class="category-btn">Inspiration</button>
+      <button class="category-btn">Clarity</button>
+    </div>
+  </section>
+  
+  <section class="featured-quote">
+    <blockquote id="featured-quote">A calm mind is a forest, full of quiet wisdom. 🦉</blockquote>
+    <p class="author">— From the Glow Forest</p>
+  </section>
+  
+  <section class="cards-grid">
+    <!-- Card 1 -->
+    <div class="card">
+      <a href="/quotes/new-beginnings-need-old-roots-fixed.html" class="card-link">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9" alt="Forest view">
+        </div>
+        <div class="card-content">
+          <span class="card-tag">Mindfulness</span>
+          <h3>New beginnings need old roots.</h3>
+          <p>Change is constant, but transformation requires a foundation. Our deepest growth often comes from acknowledging our past while embracing our future.</p>
+          <div class="card-footer">
+            <div class="card-date">
+              <i class="far fa-calendar"></i> January
+            </div>
+            <div class="social-share">
+              <div class="social-btn"><i class="fab fa-twitter"></i></div>
+              <div class="social-btn"><i class="fab fa-facebook"></i></div>
+              <div class="social-btn"><i class="far fa-bookmark"></i></div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    
+    <!-- Card 2 -->
+    <div class="card">
+      <a href="/quotes/curiosity-lasts-longer.html" class="card-link">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0" alt="Quiet forest path">
+        </div>
+        <div class="card-content">
+          <span class="card-tag">Growth</span>
+          <h3>Curiosity is quieter than love, but it lasts longer.</h3>
+          <p>While passion burns bright and fast, the gentle ember of curiosity continues to illuminate our path through life's darkest forests.</p>
+          <div class="card-footer">
+            <div class="card-date">
+              <i class="far fa-calendar"></i> February
+            </div>
+            <div class="social-share">
+              <div class="social-btn"><i class="fab fa-twitter"></i></div>
+              <div class="social-btn"><i class="fab fa-facebook"></i></div>
+              <div class="social-btn"><i class="far fa-bookmark"></i></div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    
+    <!-- Card 3 -->
+    <div class="card">
+      <a href="/quotes/seeds-laugh-underground.html" class="card-link">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1475924156734-496f6cac6ec1" alt="Misty morning">
+        </div>
+        <div class="card-content">
+          <span class="card-tag">Inspiration</span>
+          <h3>Even seeds laugh underground before blooming.</h3>
+          <p>Joy isn't just found in achievement, but in the process itself. There is merriment in the darkness before the breakthrough.</p>
+          <div class="card-footer">
+            <div class="card-date">
+              <i class="far fa-calendar"></i> March
+            </div>
+            <div class="social-share">
+              <div class="social-btn"><i class="fab fa-twitter"></i></div>
+              <div class="social-btn"><i class="fab fa-facebook"></i></div>
+              <div class="social-btn"><i class="far fa-bookmark"></i></div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    
+    <!-- Card 4 -->
+    <div class="card">
+      <a href="/quotes/rain-teaches-forests.html" class="card-link">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1498354136128-58f790194fa7?auto=format&fit=crop&w=800&q=80" alt="Misty forest in the rain">
+        </div>
+        <div class="card-content">
+          <span class="card-tag">Clarity</span>
+          <h3>Rain teaches forests more than sunlight does.</h3>
+          <p>Our greatest lessons often come from our challenges, not our comforts. Through the storm, we learn resilience that fair weather cannot teach.</p>
+          <div class="card-footer">
+            <div class="card-date">
+              <i class="far fa-calendar"></i> April
+            </div>
+            <div class="social-share">
+              <div class="social-btn"><i class="fab fa-twitter"></i></div>
+              <div class="social-btn"><i class="fab fa-facebook"></i></div>
+              <div class="social-btn"><i class="far fa-bookmark"></i></div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    
+    <!-- Card 5 -->
+    <div class="card">
+      <a href="/quotes/patience-grows-faster.html" class="card-link">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1516214104703-d870798883c5" alt="Turtle in nature">
+        </div>
+        <div class="card-content">
+          <span class="card-tag">Growth</span>
+          <h3>Patience grows faster than ambition if you feed it properly.</h3>
+          <p>The quiet practice of patience often leads to more sustainable growth than the anxious pursuit of constant achievement.</p>
+          <div class="card-footer">
+            <div class="card-date">
+              <i class="far fa-calendar"></i> May
+            </div>
+            <div class="social-share">
+              <div class="social-btn"><i class="fab fa-twitter"></i></div>
+              <div class="social-btn"><i class="fab fa-facebook"></i></div>
+              <div class="social-btn"><i class="far fa-bookmark"></i></div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    
+    <!-- Card 6 -->
+    <div class="card">
+      <a href="/quotes/calm-minds-harvest-better-gardens.html" class="card-link">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1501426026826-31c667bdf23d" alt="Peaceful garden">
+        </div>
+        <div class="card-content">
+          <span class="card-tag">Mindfulness</span>
+          <h3>Calm minds harvest better gardens.</h3>
+          <p>When we approach our work with tranquility rather than frenzy, we notice details that anxiety blinds us to, and create with greater intention.</p>
+          <div class="card-footer">
+            <div class="card-date">
+              <i class="far fa-calendar"></i> June
+            </div>
+            <div class="social-share">
+              <div class="social-btn"><i class="fab fa-twitter"></i></div>
+              <div class="social-btn"><i class="fab fa-facebook"></i></div>
+              <div class="social-btn"><i class="far fa-bookmark"></i></div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+  
+  <section class="newsletter">
+    <h3>Subscribe to Glow Seeds Monthly</h3>
+    <p>Receive our thoughtful notes and seasonal wisdom directly to your inbox.</p>
+    <form class="newsletter-form">
+      <input type="email" placeholder="Your email address">
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-column">
+      <h4>NeuralGlow.ai</h4>
+      <p>Planting seeds of calm, curiosity, and clarity in a digital world.</p>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-pinterest"></i></a>
+      </div>
+    </div>
+    
+    <div class="footer-column">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="/about.html">About Us</a></li>
+        <li><a href="/research.html">Our Research</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/notes/">Notes Archive</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-column">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="/mindfulness-guide.html">Mindfulness Guide</a></li>
+        <li><a href="/audio-meditations.html">Audio Meditations</a></li>
+        <li><a href="/ebooks.html">Free eBooks</a></li>
+        <li><a href="/wallpapers.html">Calming Wallpapers</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-column">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="neuralglowai@gmail.com">neuralglowai@gmail.com</a></li>
+        <li><a href="/contact.html">Contact Form</a></li>
+        <li><a href="/support.html">Support</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    &copy; 2025 NeuralGlow.ai — Calm. Curious. Quiet.<br>
+    <a href="https://uptimerobot.com/" target="_blank" style="color: #aed581; text-decoration: none;">
+      🌿 Monitored quietly by UptimeRobot
+    </a>
+  </div>
+</footer>
+
+<script>
+  // Store all quotes
+  const quotes = [
+    "January: New beginnings need old roots. 🌳",
+    "February: Curiosity is quieter than love, but it lasts longer. 🤫",
+    "March: Even seeds laugh underground before blooming. 😄",
+    "April: Rain teaches forests more than sunlight does. 🌧️",
+    "May: Patience grows faster than ambition if you feed it properly. 🐢",
+    "June: Calm minds harvest better gardens. 🧘",
+    "July: Slow rivers shape the strongest stones. 🏞️",
+    "August: Droughts test roots — not leaves. 🌵",
+    "September: Quiet harvests build strong winters. 🍂",
+    "October: Forests let go, humans hold on. 🍁",
+    "November: Decay is just preparation for spring. 🔄",
+    "December: Silent seeds sleep louder than storms. 💤",
+    "A calm mind is a forest, full of quiet wisdom. 🦉",
+    "Let curiosity be your compass, not your GPS. 🧭",
+    "The smallest seed of kindness can grow into a mighty tree. ❤️",
+    "Resilience is the art of bending without breaking, like a willow in the wind. 🌬️",
+    "Sometimes, the best glow comes from tending your own inner garden. ✨"
+  ];
+
+  // Display featured quote based on date + randomization
+  const today = new Date();
+  const monthIndex = today.getMonth(); // 0 = January
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  const featuredQuote = document.getElementById("featured-quote");
+  
+  // Choose between month-specific quote or a random one with 50% probability
+  if (Math.random() > 0.5 && monthIndex < 12) {
+    featuredQuote.innerText = quotes[monthIndex].split(":")[1].trim();
+  } else {
+    featuredQuote.innerText = quotes[randomIndex].split(":")[1] || quotes[randomIndex];
+  }
+  
+  // Category filter functionality
+  const categoryButtons = document.querySelectorAll('.category-btn');
+  const cards = document.querySelectorAll('.card');
+  
+  categoryButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      categoryButtons.forEach(btn => btn.classList.remove('active'));
+      
+      // Add active class to clicked button
+      button.classList.add('active');
+      
+      // Get the category from the button text
+      const category = button.textContent.toLowerCase();
+      
+      // Show/hide cards based on category
+      if (category === 'all') {
+        cards.forEach(card => card.style.display = 'flex');
+      } else {
+        cards.forEach(card => {
+          const cardCategory = card.querySelector('.card-tag').textContent.toLowerCase();
+          if (cardCategory === category) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+    });
+  });
+  
+  // Social sharing functionality
+  const socialButtons = document.querySelectorAll('.social-btn');
+  
+  socialButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const card = this.closest('.card');
+      const quote = card.querySelector('h3').textContent;
+      const tag = card.querySelector('.card-tag').textContent;
+      
+      // Get the social platform based on icon
+      const icon = this.querySelector('i');
+      
+      if (icon.classList.contains('fa-twitter')) {
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(quote + ' #NeuralGlow #' + tag)}`);
+      } else if (icon.classList.contains('fa-facebook')) {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(quote)}`);
+      } else if (icon.classList.contains('fa-bookmark')) {
+        // Save to local favorites
+        alert('Quote saved to your favorites!');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
